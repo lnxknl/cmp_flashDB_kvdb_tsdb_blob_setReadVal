@@ -18,7 +18,7 @@
 
 #define FDB_LOG_TAG "[sample][kvdb][basic]"
 
-void kvdb_basic_sample(fdb_kvdb_t kvdb)
+void kvdb_basic_sample(fdb_kvdb_t kvdb)// @NOTE 
 {
     struct fdb_blob blob;
     int boot_count = 0;
@@ -27,7 +27,7 @@ void kvdb_basic_sample(fdb_kvdb_t kvdb)
 
     { /* GET the KV value */
         /* get the "boot_count" KV value */
-        fdb_kv_get_blob(kvdb, "boot_count", fdb_blob_make(&blob, &boot_count, sizeof(boot_count)));
+        fdb_kv_get_blob(kvdb, "boot_count", fdb_blob_make(&blob, &boot_count, sizeof(boot_count)));// @NOTE 
         /* the blob.saved.len is more than 0 when get the value successful */
         if (blob.saved.len > 0) {
             FDB_INFO("get the 'boot_count' value is %d\n", boot_count);
@@ -40,7 +40,7 @@ void kvdb_basic_sample(fdb_kvdb_t kvdb)
         /* increase the boot count */
         boot_count ++;
         /* change the "boot_count" KV's value */
-        fdb_kv_set_blob(kvdb, "boot_count", fdb_blob_make(&blob, &boot_count, sizeof(boot_count)));
+        fdb_kv_set_blob(kvdb, "boot_count", fdb_blob_make(&blob, &boot_count, sizeof(boot_count)));// @NOTE 
         FDB_INFO("set the 'boot_count' value to %d\n", boot_count);
     }
 

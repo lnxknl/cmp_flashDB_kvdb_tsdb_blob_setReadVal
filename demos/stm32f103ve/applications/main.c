@@ -18,7 +18,7 @@
 static uint32_t boot_count = 0;
 static time_t boot_time[10] = {0, 1, 2, 3};
 /* default KV nodes */
-static struct fdb_default_kv_node default_kv_table[] = {
+static struct fdb_default_kv_node default_kv_table[] = {// @NOTE 
         {"username", "armink", 0}, /* string KV */
         {"password", "123456", 0}, /* string KV */
         {"boot_count", &boot_count, sizeof(boot_count)}, /* int type KV */
@@ -27,7 +27,7 @@ static struct fdb_default_kv_node default_kv_table[] = {
 /* KVDB object */
 static struct fdb_kvdb kvdb = { 0 };
 /* TSDB object */
-struct fdb_tsdb tsdb = { 0 };
+struct fdb_tsdb tsdb = { 0 };// @NOTE 
 /* counts for simulated timestamp */
 static int counts = 0;
 
@@ -62,7 +62,7 @@ int main(void)
     { /* KVDB Sample */
         struct fdb_default_kv default_kv;
 
-        default_kv.kvs = default_kv_table;
+        default_kv.kvs = default_kv_table;// @NOTE 
         default_kv.num = sizeof(default_kv_table) / sizeof(default_kv_table[0]);
         /* set the lock and unlock function if you want */
         fdb_kvdb_control(&kvdb, FDB_KVDB_CTRL_SET_LOCK, (void *)lock);
@@ -76,7 +76,7 @@ int main(void)
          * &default_kv: The default KV nodes. It will auto add to KVDB when first initialize successfully.
          *        NULL: The user data if you need, now is empty.
          */
-        result = fdb_kvdb_init(&kvdb, "env", "fdb_kvdb1", &default_kv, NULL);
+        result = fdb_kvdb_init(&kvdb, "env", "fdb_kvdb1", &default_kv, NULL);// @NOTE 
 
         if (result != FDB_NO_ERR) {
             return -1;

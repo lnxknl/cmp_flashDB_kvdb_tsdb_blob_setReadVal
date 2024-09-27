@@ -18,7 +18,7 @@
 
 #define FDB_LOG_TAG "[sample][kvdb][string]"
 
-void kvdb_type_string_sample(fdb_kvdb_t kvdb)
+void kvdb_type_string_sample(fdb_kvdb_t kvdb)// @NOTE 
 {
     FDB_INFO("==================== kvdb_type_string_sample ====================\n");
 
@@ -26,7 +26,7 @@ void kvdb_type_string_sample(fdb_kvdb_t kvdb)
         char temp_data[10] = "36C";
 
         /* It will create new KV node when "temp" KV not in database. */
-        fdb_kv_set(kvdb, "temp", temp_data);
+        fdb_kv_set(kvdb, "temp", temp_data);// @NOTE 
         FDB_INFO("create the 'temp' string KV, value is: %s\n", temp_data);
     }
 
@@ -36,7 +36,7 @@ void kvdb_type_string_sample(fdb_kvdb_t kvdb)
         /* Get the "temp" KV value.
          * NOTE: The return value saved in fdb_kv_get's buffer. Please copy away as soon as possible.
          */
-        return_value = fdb_kv_get(kvdb, "temp");
+        return_value = fdb_kv_get(kvdb, "temp");// @NOTE 
         /* the return value is NULL when get the value failed */
         if (return_value != NULL) {
             strncpy(temp_data, return_value, sizeof(temp_data));
